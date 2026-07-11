@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>阿嬤還記得｜田野資料採集平台</title>
+  <style>
+    :root{--teal:#0f5b57;--teal2:#16746d;--cream:#f7f2e8;--gold:#b5863b;--ink:#263632;--muted:#6f7975;--line:#d9d4c8;--white:#fff;--green:#758f56;--red:#a65346}
+    *{box-sizing:border-box}body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:var(--cream);color:var(--ink)}
+    button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+    .topbar{height:72px;background:linear-gradient(90deg,#0b4945,#0f5b57 58%,#1b6a62);color:white;display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #0002}
+    .brand{display:flex;align-items:center;gap:14px}.logo{width:44px;height:44px;border:2px solid #ead5ad;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#f7ead0}.brand h1{margin:0;font-size:22px}.brand small{display:block;opacity:.78;font-size:12px;margin-top:2px}
+    .user{display:flex;align-items:center;gap:10px;font-size:14px}.user .dot{width:9px;height:9px;border-radius:50%;background:#8fd19e}
+    .layout{display:grid;grid-template-columns:250px 1fr;min-height:calc(100vh - 72px)}
+    aside{background:#fffdf8;border-right:1px solid var(--line);padding:24px 18px}.nav-title{font-size:12px;color:var(--muted);letter-spacing:.12em;margin:0 10px 12px}.nav button{width:100%;border:0;background:transparent;text-align:left;padding:12px 14px;border-radius:12px;color:#42504c;margin:3px 0}.nav button.active,.nav button:hover{background:#e9f1ee;color:var(--teal);font-weight:700}
+    .drive-card{margin-top:24px;border:1px solid #d4dfdb;background:#f4f9f7;border-radius:14px;padding:14px}.drive-card strong{font-size:14px}.status{display:flex;gap:8px;align-items:center;margin-top:9px;color:#7a5d25;font-size:12px}.status i{width:8px;height:8px;border-radius:50%;background:#d6a344}
+    main{padding:28px 30px 60px;max-width:1500px;width:100%;margin:auto}
+    .hero{background:linear-gradient(135deg,#fff 0%,#f5efe2 100%);border:1px solid #e5ddcf;border-radius:22px;padding:26px 28px;display:flex;justify-content:space-between;gap:30px;align-items:center;box-shadow:0 8px 28px #2a3d3510}.hero h2{font-family:"Noto Serif TC","PMingLiU",serif;font-size:30px;margin:0 0 8px;color:var(--teal)}.hero p{margin:0;color:var(--muted);line-height:1.75}.hero .actions{display:flex;gap:10px;flex-wrap:wrap}.primary,.ghost,.danger{border:0;border-radius:11px;padding:10px 16px}.primary{background:var(--teal);color:#fff}.ghost{background:#fff;border:1px solid #cfc8bb;color:var(--ink)}.danger{background:#fff1ef;color:var(--red);border:1px solid #eac9c4}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:14px;margin:22px 0}.stat{background:#fff;border:1px solid #e2ddd2;border-radius:16px;padding:17px 18px}.stat small{color:var(--muted)}.stat b{display:block;font-size:27px;color:var(--teal);margin-top:6px}
+    .section-head{display:flex;align-items:center;justify-content:space-between;margin:26px 0 12px}.section-head h3{margin:0;font-size:20px}.filter{display:flex;gap:8px}.filter input,.filter select{border:1px solid #cbc6bb;background:#fff;border-radius:10px;padding:9px 11px}
+    .case-grid{display:grid;grid-template-columns:repeat(3,minmax(260px,1fr));gap:16px}.case{background:#fff;border:1px solid #e1dcd2;border-radius:18px;padding:18px;box-shadow:0 6px 18px #2f3d360b}.case-top{display:flex;justify-content:space-between;gap:12px}.tag{display:inline-flex;padding:4px 9px;border-radius:999px;background:#e9f1ee;color:var(--teal);font-size:12px}.case h4{margin:10px 0 5px;font-size:19px}.case p{margin:0;color:var(--muted);font-size:13px}.progress{height:10px;background:#ebe8e0;border-radius:999px;margin:16px 0 8px;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#6ea390);border-radius:999px}.pct{font-weight:700;color:var(--teal)}.missing{background:#faf5e8;border-radius:10px;padding:10px 12px;margin:12px 0;color:#705d34;font-size:12px;line-height:1.55}.case-foot{display:flex;justify-content:space-between;align-items:center}.case-foot small{color:#8b918e}
+    .editor{display:grid;grid-template-columns:280px 1fr;gap:18px}.module-list{background:#fff;border:1px solid #ded8cc;border-radius:18px;padding:12px;height:max-content;position:sticky;top:96px}.module{padding:11px 12px;border-radius:11px;display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:13px}.module:hover,.module.active{background:#eaf2ef;color:var(--teal);font-weight:700}.module em{font-style:normal;color:var(--muted);font-size:11px}
+    .form-card{background:#fff;border:1px solid #ded8cc;border-radius:18px;padding:24px}.form-card h3{margin:0 0 5px;color:var(--teal)}.form-card .lead{margin:0 0 20px;color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:700}.field input,.field select,.field textarea{border:1px solid #cec8bc;border-radius:10px;padding:11px 12px;background:#fff}.field textarea{min-height:105px;resize:vertical}.hint{font-size:11px;color:#8b918e}.savebar{position:sticky;bottom:12px;background:#fffffff2;border:1px solid #d7d1c4;border-radius:15px;padding:12px 14px;margin-top:18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 22px #0002}.savebar small{color:var(--muted)}
+    .toast{position:fixed;right:25px;bottom:25px;background:#163f3b;color:#fff;padding:12px 17px;border-radius:11px;opacity:0;transform:translateY(20px);transition:.25s;z-index:50}.toast.show{opacity:1;transform:none}
+    @media(max-width:1050px){.case-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}aside{display:none}.editor{grid-template-columns:1fr}.module-list{position:static}.hero{align-items:flex-start;flex-direction:column}}
+    @media(max-width:650px){main{padding:18px 14px}.case-grid,.stats,.grid{grid-template-columns:1fr}.topbar{padding:0 14px}.brand h1{font-size:17px}.user span{display:none}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">憶</div><div><h1>阿嬤還記得</h1><small>田野資料採集與成果管理平台</small></div></div>
+  <div class="user"><span class="dot"></span><span>示範模式｜學生帳號</span></div>
+</header>
+<div class="layout">
+  <aside>
+    <p class="nav-title">工作區</p>
+    <nav class="nav">
+      <button class="active" data-view="dashboard">⌂ 我的個案</button>
+      <button data-view="editor">✎ 資料填寫</button>
+      <button data-view="progress">◔ 進度與缺件</button>
+      <button data-view="uploads">⇧ 上傳中心</button>
+      <button data-view="review">✓ 教師審查</button>
+    </nav>
+    <div class="drive-card"><strong>Google Drive串接</strong><div class="status"><i></i><span>等待Apps Script後端網址</span></div><small style="display:block;margin-top:8px;color:#78827e">根資料夾已設定：19Mq…2rfJ7</small></div>
+  </aside>
+  <main>
+    <section id="dashboardView">
+      <div class="hero"><div><h2>把每一次訪談，變成可完成10項成果的資料</h2><p>可分次填寫、自動保存、檢查缺件，並在後端啟用後同步至Google Sheets與指定Drive資料夾。</p></div><div class="actions"><button class="primary" id="newCaseBtn">＋ 新增個案</button><button class="ghost" id="resumeBtn">繼續上次填寫</button></div></div>
+      <div class="stats"><div class="stat"><small>我的個案</small><b>3</b></div><div class="stat"><small>平均完成度</small><b>67%</b></div><div class="stat"><small>待補件</small><b>2</b></div><div class="stat"><small>可送審</small><b>1</b></div></div>
+      <div class="section-head"><h3>我的個案</h3><div class="filter"><input placeholder="搜尋受訪者或編號"><select><option>全部場域</option><option>板橋</option><option>忠寮</option></select></div></div>
+      <div class="case-grid" id="caseGrid"></div>
+    </section>
+
+    <section id="editorView" class="hidden">
+      <div class="hero"><div><h2 id="caseTitle">BQ-115-001｜林阿嬤</h2><p>最後儲存：尚未儲存｜資料可隨時離開後再回來補充。</p></div><div><span class="pct" id="overallPct">68%</span><div class="progress" style="width:260px"><span id="overallBar" style="width:68%"></span></div></div></div>
+      <div class="editor" style="margin-top:18px"><div class="module-list" id="moduleList"></div><div class="form-card"><h3 id="moduleTitle">A.個案主索引</h3><p class="lead" id="moduleLead">建立個案識別與基本管理資訊。</p><div class="grid" id="formGrid"></div><div class="savebar"><small id="saveStatus">尚未修改</small><div><button class="ghost" id="backBtn">返回個案</button> <button class="primary" id="saveBtn">儲存草稿</button></div></div></div></div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast">已儲存草稿</div>
+<script>
+const modules=[
+ {id:'A',name:'個案主索引',lead:'建立個案識別、場域與管理狀態。',fields:[['個案編號','caseId','text','例如BQ-115-001'],['場域','site','select',['板橋','忠寮']],['受訪者代碼','respondentCode','text','例如BQ-P01'],['訪談日期','interviewDate','date'],['資料整理者','editor','text'],['備註','note','textarea']]},
+ {id:'B',name:'受訪者人物資料',lead:'建立人物身分、地方關係與飲食角色。',fields:[['公開姓名','displayName','text'],['出生年代','birthEra','text'],['原生地','origin','text'],['現居地','residence','text'],['主要職業','job','text'],['飲食角色','foodRole','text'],['公開身分簡介','bio','textarea']]},
+ {id:'C',name:'訪談與原始證據',lead:'記錄訪談場次、檔案與田野札記。',fields:[['訪談場次編號','sessionId','text'],['訪談地點','interviewPlace','text'],['主訪者','interviewer','text'],['訪談長度（分鐘）','duration','number'],['音檔名稱','audioFile','text'],['逐字稿名稱','transcript','text'],['田野札記','fieldNote','textarea']]},
+ {id:'D',name:'人物生命故事',lead:'至少完成2則具時間、地點、事件與情感的完整故事。',fields:[['故事標題','storyTitle','text'],['發生年代','storyEra','text'],['發生地點','storyPlace','text'],['核心事件','storyEvent','textarea'],['情感與地方意義','storyMeaning','textarea'],['關鍵引句','quote','textarea'],['300字故事摘要','summary','textarea']]},
+ {id:'E',name:'代表料理',lead:'記錄料理、食材、作法與文化意義。',fields:[['料理名稱','dishName','text'],['料理類型','dishType','select',['家常菜','節慶菜','農忙料理','惜食料理']],['主要食材','ingredients','textarea'],['食材來源','source','text'],['製作步驟','steps','textarea'],['料理記憶','dishMemory','textarea']]},
+ {id:'F',name:'食物路徑',lead:'從生產、取得、保存、烹煮、共餐到剩食的完整路徑。',fields:[['生產／來源','pathSource','textarea'],['取得與運輸','pathAcquire','textarea'],['保存方式','pathStore','textarea'],['烹煮與共餐','pathCook','textarea'],['剩食處理','pathWaste','textarea']]},
+ {id:'G',name:'城市—農村比較',lead:'以共同欄位支持後續比較矩陣。',fields:[['食材來源特性','compareSource','text'],['烹調方式','compareCook','text'],['共餐頻率','compareMeal','text'],['節慶料理','compareFestival','text'],['記憶味道','compareTaste','text'],['現代變化','compareChange','textarea']]},
+ {id:'H',name:'惜食與永續智慧',lead:'至少記錄1項可操作的惜食方法。',fields:[['方法名稱','wasteName','text'],['使用食材','wasteFood','text'],['操作步驟','wasteSteps','textarea'],['知識來源','wasteOrigin','text'],['永續意義','wasteMeaning','textarea']]},
+ {id:'I',name:'地圖節點',lead:'建立可公開的地方節點與故事。',fields:[['地點名稱','locationName','text'],['地點類型','locationType','select',['市場','家屋','農田','廚房','社區據點','其他']],['地址／區域','locationAddress','text'],['地點故事','locationStory','textarea'],['公開精度','locationPrivacy','select',['精確位置','區域位置','不公開']] ]},
+ {id:'J',name:'媒體素材',lead:'記錄照片、錄音、影片與授權資訊。',fields:[['人物照片數量','photoPeople','number'],['料理照片數量','photoFood','number'],['場域照片數量','photoPlace','number'],['直式影片數量','videoVertical','number'],['橫式影片數量','videoHorizontal','number'],['素材說明','mediaNote','textarea']]},
+ {id:'K',name:'授權與公開分級',lead:'分別確認文字、照片、聲音、影片與AI使用權限。',fields:[['文字授權','permText','select',['P0內部','P1課程','P2展示','P3公開與AI']],['照片授權','permPhoto','select',['P0內部','P1課程','P2展示','P3公開與AI']],['聲音授權','permAudio','select',['P0內部','P1課程','P2展示','P3公開與AI']],['AI資料授權','permAi','select',['不同意','匿名摘要','同意公開使用']],['授權備註','permNote','textarea']]},
+ {id:'L',name:'成果轉譯資料',lead:'完成摘要、故事卡、問答、聲音與短影音腳本。',fields:[['故事標題','outTitle','text'],['人物簡介','outBio','textarea'],['故事卡短文','outCard','textarea'],['展板文字','outPanel','textarea'],['AI標準問答','outQa','textarea'],['有聲故事稿','outAudio','textarea'],['60秒影片腳本','outVideo','textarea']]}
+];
+const demoCases=[
+ {id:'BQ-115-001',site:'板橋',name:'林阿嬤',pct:68,missing:'料理製作步驟、聲音授權、AI問答2組',updated:'今天14:32'},
+ {id:'ZL-115-003',site:'忠寮',name:'王阿伯',pct:42,missing:'人物故事1則、地圖節點、直式影片2段',updated:'昨天18:05'},
+ {id:'BQ-115-007',site:'板橋',name:'陳阿嬤',pct:100,missing:'已達送審標準',updated:'7月10日'}
+];
+let currentCase=demoCases[0], currentModule=0; const storeKey='amah-platform-demo'; let data=JSON.parse(localStorage.getItem(storeKey)||'{}');
+const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
+function renderCases(){q('#caseGrid').innerHTML=demoCases.map((c,i)=>`<article class="case"><div class="case-top"><span class="tag">${c.site}</span><span class="pct">${c.pct}%</span></div><h4>${c.id}｜${c.name}</h4><p>個案資料採集與成果轉譯</p><div class="progress"><span style="width:${c.pct}%"></span></div><div class="missing">${c.pct===100?'✓ ': '尚缺：'}${c.missing}</div><div class="case-foot"><small>更新：${c.updated}</small><button class="primary" onclick="openCase(${i})">${c.pct===100?'查看':'繼續填寫'}</button></div></article>`).join('')}
+function renderModules(){q('#moduleList').innerHTML=modules.map((m,i)=>`<div class="module ${i===currentModule?'active':''}" onclick="switchModule(${i})"><span>${m.id}. ${m.name}</span><em>${modulePct(m)}%</em></div>`).join('')}
+function modulePct(m){const obj=data[currentCase.id]?.[m.id]||{};const filled=m.fields.filter(f=>String(obj[f[1]]||'').trim()).length;return Math.round(filled/m.fields.length*100)}
+function renderForm(){const m=modules[currentModule], obj=data[currentCase.id]?.[m.id]||{};q('#moduleTitle').textContent=`${m.id}.${m.name}`;q('#moduleLead').textContent=m.lead;q('#formGrid').innerHTML=m.fields.map(f=>{const [label,key,type,opts]=f;const val=obj[key]||'';if(type==='textarea')return `<div class="field full"><label>${label}</label><textarea data-key="${key}">${val}</textarea><span class="hint">可分次補充，離開前請儲存草稿。</span></div>`;if(type==='select')return `<div class="field"><label>${label}</label><select data-key="${key}"><option value="">請選擇</option>${opts.map(o=>`<option ${val===o?'selected':''}>${o}</option>`).join('')}</select></div>`;return `<div class="field"><label>${label}</label><input type="${type}" data-key="${key}" value="${val}" ${opts?`placeholder="${opts}"`:''}></div>`}).join('');qa('[data-key]').forEach(el=>el.addEventListener('input',()=>{q('#saveStatus').textContent='有尚未儲存的修改';q('#saveStatus').style.color='#a65346'}))}
+function save(){data[currentCase.id]??={};data[currentCase.id][modules[currentModule].id]??={};qa('[data-key]').forEach(el=>data[currentCase.id][modules[currentModule].id][el.dataset.key]=el.value);localStorage.setItem(storeKey,JSON.stringify(data));q('#saveStatus').textContent=`已於 ${new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'})} 儲存`;q('#saveStatus').style.color='#16746d';renderModules();showToast()}
+function showToast(){q('#toast').classList.add('show');setTimeout(()=>q('#toast').classList.remove('show'),1800)}
+function openCase(i){currentCase=demoCases[i];q('#caseTitle').textContent=`${currentCase.id}｜${currentCase.name}`;q('#overallPct').textContent=currentCase.pct+'%';q('#overallBar').style.width=currentCase.pct+'%';showView('editor');renderModules();renderForm()}
+function switchModule(i){save();currentModule=i;renderModules();renderForm()}
+function showView(v){q('#dashboardView').classList.toggle('hidden',v!=='dashboard');q('#editorView').classList.toggle('hidden',v!=='editor');qa('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));if(v!=='dashboard'&&v!=='editor'){alert('此模組將在Google Apps Script後端完成授權後啟用。');showView('dashboard')}}
+qa('.nav button').forEach(b=>b.onclick=()=>showView(b.dataset.view));q('#saveBtn').onclick=save;q('#backBtn').onclick=()=>showView('dashboard');q('#resumeBtn').onclick=()=>openCase(0);q('#newCaseBtn').onclick=()=>alert('正式版將由Google後端產生新的個案編號與Drive資料夾。');
+renderCases();
+</script>
+</body>
+</html>
