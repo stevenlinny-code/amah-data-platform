@@ -6,7 +6,7 @@
 - Demo資料模式
 - Google Apps Script正式後端原始碼
 - GitHub Actions自動發布流程
-- Google Drive根資料夾設定：`19Mq_FqPnrUPvKXYwaq0wV_wnlJe2rfJ7`
+- Google Drive根資料夾設定：
 
 ## 線上模式
 
@@ -22,8 +22,6 @@ window.AMAH_CONFIG = Object.freeze({
 
 ## Demo帳號
 
-- 學生：`student@example.edu.tw`／`student123`
-- 教師：`teacher@example.edu.tw`／`teacher123`
 
 ## 正式部署
 
