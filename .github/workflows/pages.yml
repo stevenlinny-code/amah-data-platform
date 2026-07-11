@@ -28,8 +28,10 @@ jobs:
         run: |
           rm -rf _site
           mkdir -p _site
-          unzip -q site-package.zip -d _site
-          rm -rf _site/.github
+          cp index.html _site/
+          cp app-config.js _site/
+          cp bridge_api.js _site/
+          cp mock_api.js _site/
           touch _site/.nojekyll
 
       - name: Configure Pages
