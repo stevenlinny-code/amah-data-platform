@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title><?= appName ?>｜Bridge</title>
+</head>
+<body>
+<script>
+(function () {
+  'use strict';
+  window.addEventListener('message', function (event) {
+    const msg = event.data || {};
+    if (msg.type !== 'amah-rpc' || !msg.requestId || !msg.method) return;
+    const reply = function (payload) {
+      event.source.postMessage(payload, event.origin || '*');
+    };
+    try {
+      const runner = google.script.run
+        .withSuccessHandler(function (result) {
+          reply({ type: 'amah-rpc-result', requestId: msg.requestId, ok: true, result: result });
+        })
+        .withFailureHandler(function (error) {
+          reply({ type: 'amah-rpc-result', requestId: msg.requestId, ok: false, error: error && error.message ? error.message : String(error) });
+        });
+      if (typeof runner[msg.method] !== 'function') {
+        throw new Error('不支援的後端方法：' + msg.method);
+      }
+      runner[msg.method].apply(runner, Array.isArray(msg.args) ? msg.args : []);
+    } catch (error) {
+      reply({ type: 'amah-rpc-result', requestId: msg.requestId, ok: false, error: error.message || String(error) });
+    }
+  });
+  parent.postMessage({ type: 'amah-bridge-ready' }, '*');
+})();
+</script>
+</body>
+</html>
