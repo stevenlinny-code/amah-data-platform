@@ -29,9 +29,6 @@ jobs:
           rm -rf _site
           mkdir -p _site
           cp index.html _site/
-          cp app-config.js _site/
-          cp bridge_api.js _site/
-          cp mock_api.js _site/
           touch _site/.nojekyll
 
       - name: Configure Pages
